@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bianca Lauren — Creative Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF1E6;
+    --paper:#FFFDF9;
+    --ink:#3A2530;
+    --ink-soft:#6B5560;
+    --rose:#C97B84;
+    --rose-dark:#A85862;
+    --sage:#7C8F5D;
+    --gold:#D9A441;
+    --coral:#E2836B;
+    --line:#E7D9CB;
+    --shadow:0 8px 20px rgba(58,37,48,0.08);
+    --shadow-hover:0 14px 30px rgba(58,37,48,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Karla',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.15rem;
+    font-weight:500;
+    color:var(--rose-dark);
+    display:inline-block;
+    margin-bottom:4px;
+  }
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,241,230,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:18px;padding-bottom:18px;
+  }
+  .nav-name{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;text-decoration:none;}
+  .nav-links{display:flex;gap:28px;list-style:none;padding:0;margin:0;}
+  .nav-links a{text-decoration:none;font-size:0.95rem;font-weight:500;color:var(--ink-soft);transition:color .2s;}
+  .nav-links a:hover{color:var(--rose-dark);}
+
+  /* HERO */
+  .hero{padding:90px 0 70px;}
+  .hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 26px;}
+  .tag{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:7px 16px;
+    border-radius:20px;
+    font-size:0.88rem;
+    font-weight:500;
+    color:var(--ink-soft);
+  }
+  .hero h1{font-size:3.2rem;line-height:1.1;max-width:680px;}
+  .hero h1 span{color:var(--rose-dark);font-style:italic;}
+  .hero p{max-width:560px;font-size:1.1rem;color:var(--ink-soft);margin-top:18px;}
+  .hero-cta{margin-top:32px;display:flex;gap:16px;}
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary{background:var(--rose-dark);color:var(--paper);box-shadow:var(--shadow);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+
+  /* SECTION HEADERS */
+  section{padding:70px 0;}
+  .section-head{margin-bottom:38px;max-width:640px;}
+  .section-head h2{font-size:2.1rem;}
+  .section-head p{color:var(--ink-soft);margin-top:10px;}
+
+  /* PINNED CARD GRID (featured case studies) */
+  .pinned-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:34px;
+  }
+  .pin-card{
+    background:var(--paper);
+    border-radius:6px;
+    box-shadow:var(--shadow);
+    padding:0;
+    overflow:hidden;
+    transition:transform .25s, box-shadow .25s;
+    position:relative;
+  }
+  .pin-card{border-top:3px solid var(--rose-dark);}
+  .pin-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);}
+  .pin-card-img{
+    height:170px;
+    background:linear-gradient(135deg,var(--rose) 0%,var(--gold) 100%);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--paper);font-family:'Fraunces',serif;font-size:1rem;letter-spacing:0.3px;
+  }
+  .pin-card-body{padding:24px 22px 26px;}
+  .pin-tag{
+    font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;
+    color:var(--sage);margin-bottom:8px;
+  }
+  .pin-card-body h3{font-size:1.3rem;margin-bottom:8px;}
+  .pin-card-body p{font-size:0.95rem;color:var(--ink-soft);margin-bottom:14px;}
+  .pin-link{font-weight:600;font-size:0.9rem;color:var(--rose-dark);text-decoration:none;}
+  .pin-link:hover{text-decoration:underline;}
+
+  /* SIMPLE GALLERY GRID (content samples) */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:22px;
+  }
+  .gallery-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px;
+    transition:box-shadow .2s, border-color .2s;
+  }
+  .gallery-card:hover{box-shadow:var(--shadow);border-color:transparent;}
+  .gallery-icon{
+    width:38px;height:38px;border-radius:8px;
+    background:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:600;color:var(--rose-dark);
+    margin-bottom:14px;
+  }
+  .gallery-card h3{font-size:1.05rem;margin-bottom:6px;}
+  .gallery-card p{font-size:0.9rem;color:var(--ink-soft);}
+  .gallery-card .pin-link{display:inline-block;margin-top:12px;}
+
+  /* CATEGORY DIVIDER */
+  .category-label{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;font-weight:500;
+    color:var(--sage);display:inline-block;
+    margin:0 0 18px;
+  }
+  .subsection{margin-bottom:48px;}
+  .subsection:last-child{margin-bottom:0;}
+
+  .filter-pill{
+    background:var(--paper);
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:0.88rem;
+    font-weight:500;
+    font-family:'Karla',sans-serif;
+    cursor:pointer;
+    transition:background .2s, color .2s, border-color .2s;
+  }
+  .filter-pill:hover{border-color:var(--rose-dark);}
+  .filter-pill.active{background:var(--rose-dark);color:var(--paper);border-color:var(--rose-dark);}
+
+  /* ABOUT */
+  .about{
+    background:var(--paper);
+    border-radius:14px;
+    padding:50px;
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .about-avatar{
+    width:180px;height:180px;border-radius:50%;
+    background:linear-gradient(160deg,var(--rose) 0%,var(--rose-dark) 100%);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--paper);font-family:'Fraunces',serif;font-size:2.6rem;font-weight:600;
+  }
+  .about-text p{color:var(--ink-soft);margin-bottom:14px;}
+
+  /* CONTACT / FOOTER */
+  footer{
+    background:var(--ink);
+    color:var(--cream);
+    padding:64px 0 40px;
+  }
+  footer h2{color:var(--cream);font-size:2rem;}
+  footer p{color:#D8C4CC;margin-top:10px;max-width:480px;}
+  .contact-row{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px;}
+  .contact-item{display:flex;flex-direction:column;gap:4px;}
+  .contact-item span{font-size:0.8rem;text-transform:uppercase;letter-spacing:0.6px;color:var(--rose);}
+  .contact-item a{color:var(--cream);text-decoration:none;font-weight:600;}
+  .contact-item a:hover{text-decoration:underline;}
+  .footer-bottom{
+    margin-top:50px;padding-top:24px;border-top:1px solid rgba(251,241,230,0.15);
+    font-size:0.85rem;color:#B49AA3;
+  }
+
+  @media(max-width:720px){
+    .hero h1{font-size:2.3rem;}
+    .about{grid-template-columns:1fr;text-align:center;}
+    .about-avatar{margin:0 auto;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="nav-name">Bianca Lauren</a>
+    <ul class="nav-links">
+      <li><a href="#work">Case studies</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#social">Social media</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">hi, I'm Bianca —</span>
+    <h1>Content strategist and writer with a passion for creating <span>connections.</span></h1>
+    <div class="hero-tags">
+      <span class="tag">Content strategist</span>
+      <span class="tag">Copywriter</span>
+    </div>
+    <p>A collection of short and long form content and stories ranging from tech to nonprofit.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">See featured work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="category-label">the highlights</span>
+      <h2>Featured case studies</h2>
+      <p>Three success stories of growth and connection.</p>
+    </div>
+    <div class="pinned-grid">
+      <div class="pin-card">
+        <div class="pin-card-img">Jewish Federation of Greater Indianapolis</div>
+        <div class="pin-card-body">
+          <div class="pin-tag">Content strategy + social media</div>
+          <h3>Growing community engagement, one story at a time</h3>
+          <p>As in-house content strategist for a year, I moved the org away from static graphics toward real footage, launched a recurring community spotlight series, and drove measurable growth in engagement and giving.</p>
+          <div style="display:flex;gap:18px;margin-bottom:14px;flex-wrap:wrap;">
+            <div><div style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--rose-dark);">300%+</div><div style="font-size:0.78rem;color:var(--ink-soft);">Engagement</div></div>
+            <div><div style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--rose-dark);">76%</div><div style="font-size:0.78rem;color:var(--ink-soft);">Shares</div></div>
+            <div><div style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--rose-dark);">20%</div><div style="font-size:0.78rem;color:var(--ink-soft);">Donation growth</div></div>
+          </div>
+
+        </div>
+      </div>
+      <div class="pin-card">
+        <div class="pin-card-img">Coldwell Banker Global Luxury</div>
+        <div class="pin-card-body">
+          <div class="pin-tag">Content strategy + copywriting</div>
+          <h3>Scaling luxury real estate marketing</h3>
+          <p>As in-house content strategist for 2+ years, I built a scalable content system for 50+ agents and wrote SEO-optimized copy for luxury listings valued at $1M+.</p>
+          <div style="display:flex;gap:18px;margin-bottom:14px;flex-wrap:wrap;">
+            <div><div style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--rose-dark);">50+</div><div style="font-size:0.78rem;color:var(--ink-soft);">Agents supported</div></div>
+            <div><div style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--rose-dark);">$775M+</div><div style="font-size:0.78rem;color:var(--ink-soft);">Driven annually</div></div>
+            <div><div style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--rose-dark);">$1M+</div><div style="font-size:0.78rem;color:var(--ink-soft);">Listing tier</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="pin-card">
+        <div class="pin-card-img">B2B Tech Startup</div>
+        <div class="pin-card-body">
+          <div class="pin-tag">Content strategy</div>
+          <h3>Building a content foundation from scratch</h3>
+          <p>As in-house content strategist, I built a B2B tech startup's content marketing strategy from the ground up, developing thought leadership on blockchain and cybersecurity trends.</p>
+          <div style="display:flex;gap:18px;margin-bottom:14px;flex-wrap:wrap;">
+            <div><div style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--rose-dark);">150%+</div><div style="font-size:0.78rem;color:var(--ink-soft);">Growth fueled</div></div>
+            <div><div style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--rose-dark);">~8%</div><div style="font-size:0.78rem;color:var(--ink-soft);">Engagement rate</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="category-label">on the page</span>
+      <h2>Writing &amp; copywriting</h2>
+      <p>Articles, listings, bios, letters, and more — filter by type or browse everything.</p>
+    </div>
+
+    <div id="writing-filters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;">
+      <button class="filter-pill active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="articles">Articles</button>
+      <button class="filter-pill" data-filter="web">Web content &amp; bios</button>
+      <button class="filter-pill" data-filter="listings">Property listings</button>
+      <button class="filter-pill" data-filter="nonprofit">Nonprofit &amp; donor</button>
+      <button class="filter-pill" data-filter="print">Print &amp; flyers</button>
+    </div>
+
+    <div class="gallery" id="writing-grid">
+      <div class="gallery-card" data-cat="articles">
+        <div class="gallery-icon">A</div>
+        <h3>20 tech trends taking over 2020</h3>
+        <p>A forecast piece breaking down the year's biggest tech shifts — from IoT and AI to blockchain and 5G — for a B2B audience trying to plan ahead.</p>
+      </div>
+      <div class="gallery-card" data-cat="articles">
+        <div class="gallery-icon">A</div>
+        <h3>What is DevSecOps and why does it matter?</h3>
+        <p>A plain-language breakdown of a dense technical concept, written to make a development strategy term accessible to a broader business audience.</p>
+      </div>
+      <div class="gallery-card" data-cat="articles">
+        <div class="gallery-icon">A</div>
+        <h3>What your business can learn from a livestreaming platform's growth</h3>
+        <p>A business-lessons piece using a major platform's growth story to unpack takeaways on product strategy, brand values, and community-led growth.</p>
+      </div>
+      <div class="gallery-card" data-cat="articles">
+        <div class="gallery-icon">A</div>
+        <h3>AI tools to grow your business</h3>
+        <p>A practical rundown of AI applications for sales and marketing teams — lead scoring, SEO, e-commerce, and customer service chatbots.</p>
+      </div>
+      <div class="gallery-card" data-cat="articles">
+        <div class="gallery-icon">A</div>
+        <h3>A celebrity gets honest on stage</h3>
+        <p>An entertainment recap covering a major artist's appearance at a high-profile industry event, with color, candid quotes, and event detail.</p>
+      </div>
+      <div class="gallery-card" data-cat="articles">
+        <div class="gallery-icon">A</div>
+        <h3>A bill that could increase student voter turnout</h3>
+        <p>A campus journalism piece on proposed legislation for on-campus polling sites, reported with student and expert interviews.</p>
+      </div>
+      <div class="gallery-card" data-cat="articles">
+        <div class="gallery-icon">A</div>
+        <h3>Live in fashion: a luxury residence launch</h3>
+        <p>A luxury real estate feature on a $68 million designer-branded residential project.</p>
+      </div>
+      <div class="gallery-card" data-cat="articles">
+        <div class="gallery-icon">A</div>
+        <h3>Behind the scenes of a major art fair</h3>
+        <p>A bilingual lifestyle feature on the event design and culinary experiences behind a major international art fair.</p>
+      </div>
+
+      <div class="gallery-card" data-cat="web">
+        <div class="gallery-icon">R</div>
+        <h3>Real estate sales associate bio</h3>
+        <p>A warm, personality-driven bio built around a realtor's "I get people where they need to be" philosophy.</p>
+      </div>
+      <div class="gallery-card" data-cat="web">
+        <div class="gallery-icon">R</div>
+        <h3>Real estate specialist bio</h3>
+        <p>A bio for a luxury agent that leans on his hospitality background and multilingual client relationships.</p>
+      </div>
+
+      <div class="gallery-card" data-cat="listings">
+        <div class="gallery-icon">P</div>
+        <h3>Single-family home listing</h3>
+        <p>Listing copy for a $1.18M single-family home, highlighting the pool, boat access, and proximity to the beach and marina.</p>
+      </div>
+      <div class="gallery-card" data-cat="listings">
+        <div class="gallery-icon">P</div>
+        <h3>Oceanfront condo rental listing</h3>
+        <p>A rental listing for an oceanfront condo, written to sell the view and full-service building amenities.</p>
+      </div>
+      <div class="gallery-card" data-cat="listings">
+        <div class="gallery-icon">P</div>
+        <h3>Social listing announcement</h3>
+        <p>A just-sold social post for a real estate agent, written to generate buzz around an up-and-coming neighborhood.</p>
+      </div>
+
+      <div class="gallery-card" data-cat="nonprofit">
+        <div class="gallery-icon">D</div>
+        <h3>Summer camp annual appeal letter</h3>
+        <p>A direct mail appeal for an overnight camp, pairing a parent testimonial with a case for why camp matters for community and belonging.</p>
+      </div>
+      <div class="gallery-card" data-cat="nonprofit">
+        <div class="gallery-icon">D</div>
+        <h3>Pediatric camp appeal letter</h3>
+        <p>An appeal for a free summer camp serving children with a serious illness and their siblings, grounding the ask in real family impact and program growth.</p>
+      </div>
+      <div class="gallery-card" data-cat="nonprofit">
+        <div class="gallery-icon">D</div>
+        <h3>Year-end donor thank-you email</h3>
+        <p>A short, warm thank-you to donors, recapping the year's impact across programs.</p>
+      </div>
+
+      <div class="gallery-card" data-cat="web">
+        <div class="gallery-icon">W</div>
+        <h3>Venues & events company — About page</h3>
+        <p>Site copy for a venues, catering, and events company, positioning a city's culture and glamour alongside the brand's own offerings.</p>
+      </div>
+
+      <div class="gallery-card" data-cat="print">
+        <div class="gallery-icon">F</div>
+        <h3>Women's philanthropy event flyer</h3>
+        <p>An invitation flyer for a women's philanthropy event featuring a guest speaker.</p>
+      </div>
+      <div class="gallery-card" data-cat="print">
+        <div class="gallery-icon">F</div>
+        <h3>Family fall festival flyer</h3>
+        <p>A family event flyer for an annual fall festival, balancing a full activity lineup with a dedicated moment of community remembrance.</p>
+      </div>
+      <div class="gallery-card" data-cat="print">
+        <div class="gallery-icon">F</div>
+        <h3>Community vigil flyer</h3>
+        <p>A community vigil flyer coordinating a gathering in mourning and solidarity.</p>
+      </div>
+      <div class="gallery-card" data-cat="print">
+        <div class="gallery-icon">F</div>
+        <h3>Family Shabbat celebration flyer</h3>
+        <p>A flyer for an outdoor family Shabbat celebration, built around simple, warm event details.</p>
+      </div>
+      <div class="gallery-card" data-cat="print">
+        <div class="gallery-icon">F</div>
+        <h3>Fall harvest family event flyer</h3>
+        <p>A family event flyer for an early childhood program's fall harvest celebration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var pills = document.querySelectorAll('#writing-filters .filter-pill');
+  var cards = document.querySelectorAll('#writing-grid .gallery-card');
+  pills.forEach(function(pill){
+    pill.addEventListener('click', function(){
+      pills.forEach(function(p){ p.classList.remove('active'); });
+      pill.classList.add('active');
+      var f = pill.getAttribute('data-filter');
+      cards.forEach(function(card){
+        card.style.display = (f === 'all' || card.getAttribute('data-cat') === f) ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+
+<section id="social">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="category-label">out in the wild</span>
+      <h2>Social media work</h2>
+      <p>Posts, reels, and LinkedIn content that tell the story.</p>
+    </div>
+    <div class="gallery">
+      <div class="gallery-card">
+        <div class="gallery-icon">L</div>
+        <h3>Industry trend post</h3>
+        <p>A LinkedIn post for a financial advisory firm, breaking down a regulatory funding increase and its ripple effects across an industry.</p>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-icon">L</div>
+        <h3>M&amp;A deal announcement post</h3>
+        <p>A LinkedIn post announcing an exclusive sell-side engagement, framed around the seller's growth story and market opportunity.</p>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-icon">S</div>
+        <h3>Recurring community spotlight series</h3>
+        <p>A post from an original recurring series created to highlight individual members of a community.</p>
+        <a href="https://www.instagram.com/p/DG-_cRGz6_R/" class="pin-link" target="_blank" rel="noopener">View post →</a>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-icon">R</div>
+        <h3>Event recap reel</h3>
+        <p>A short-form recap reel capturing the energy of a live community event.</p>
+        <a href="https://www.instagram.com/reels/DHlo9sAOCTa/" class="pin-link" target="_blank" rel="noopener">View reel →</a>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-icon">P</div>
+        <h3>Community connection post</h3>
+        <p>A post connecting a major local sporting event to the broader community.</p>
+        <a href="https://www.instagram.com/p/DKE1zeyOFhu/" class="pin-link" target="_blank" rel="noopener">View post →</a>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-icon">R</div>
+        <h3>Event recap reel with guest appearance</h3>
+        <p>A recap reel featuring a well-known local personality at a community event.</p>
+        <a href="https://www.instagram.com/reels/DHBwrFEOop5/" class="pin-link" target="_blank" rel="noopener">View reel →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="about-avatar">BL</div>
+      <div class="about-text">
+        <span class="eyebrow">a little about me</span>
+        <h2>Telling stories to break down barriers.</h2>
+        <p>I am personally fascinated by how content and copy can create connection, and that has never been more true than in the age of AI, where we need humanity more than ever. Every brand, founder, and organization has a story. Let me help tell yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--rose);">let's work together</span>
+    <h2>Want to chat more?</h2>
+    <p>I'm open to full-time roles and freelance projects — reach out and let's talk about what you need.</p>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:biancalmarkey@gmail.com">biancalmarkey@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span>LinkedIn</span>
+        <a href="#" target="_blank" rel="noopener">Let's connect</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Bianca Lauren. Built with care.</div>
+  </div>
+</footer>
+
+</body>
+</html>
